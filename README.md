@@ -1,5 +1,5 @@
 # MedBook
-A SwiftUI iOS application that allows users to search for books and bookmark them
+A SwiftUI iOS/iPadOS application that allows users to search for books and bookmark them
 
 
 <table>
