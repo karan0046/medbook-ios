@@ -31,9 +31,6 @@ struct LaunchScreenView: View {
                             withAnimation(.easeOut(duration: 1.5)) {
                                 scaleEffect = 1.0
                             }
-                            if viewModel.userLoggedIn {
-                                navigateToHome = true
-                            }
                         }
                 }
                 .padding(.bottom, 40)
@@ -72,6 +69,11 @@ struct LaunchScreenView: View {
                         .frame(width: 0.4*UIScreen.main.bounds.width, height: 50)
                     }
                     .padding(.bottom, 50)
+                }
+            }
+            .onAppear {
+                if viewModel.userLoggedIn {
+                    navigateToHome = true
                 }
             }
             .onChange(of: viewModel.userLoggedIn, { oldValue, newValue in
