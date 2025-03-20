@@ -36,30 +36,26 @@ class BookListViewModel: ObservableObject {
             clearBookList()
         }
         offset = bookList.count
-        guard let url = createURL(searchText: searchText) else {
+        guard let url = URL(string: bookListURL) else {
             loading = false
             return
         }
         // call API to fetch data
-        let (_, _, result, _) = await API(url).execute()
+        let api = API(url).queryItems([
+            "title": searchText,
+            "offset": "\(offset)",
+            "limit": "\(limit)"
+        ])
+        let (responseStatus, _, result, _) = await api.execute()
         guard let data = result as? [String: Any],
               let docs = data["docs"] as? [[String: Any]] else {
+            print(responseStatus)
             loading = false
             return
         }
         bookList.append(contentsOf: docs.map { Book(json: $0) })
         await loadBookmarks()
         loading = false
-    }
-    
-    private func createURL(searchText: String) -> URL? {
-        var components = URLComponents(string: bookListURL)
-        components?.queryItems = [
-            URLQueryItem(name: "title", value: searchText),
-            URLQueryItem(name: "offset", value: "\(offset)"),
-            URLQueryItem(name: "limit", value: "\(limit)")
-        ]
-        return components?.url
     }
     
     func loadBookmarks() async {

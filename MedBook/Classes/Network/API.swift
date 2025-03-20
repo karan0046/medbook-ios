@@ -10,7 +10,6 @@ import Foundation
 class API: APIProtocol {
     var url: URL
     var method: HTTPMethod = .get
-    var queryItems: [URLQueryItem] = []
     var bodyParams: [String: Any]?
     var headers: [String: String] = [:]
 
@@ -24,10 +23,11 @@ class API: APIProtocol {
     }
 
     func queryItems(_ queryItems: [String: String]) -> Self {
-        self.queryItems.removeAll()
+        var urlQueryItems = [URLQueryItem]()
         queryItems.forEach { (key, value) in
-            self.queryItems.append(URLQueryItem(name: key, value: value))
+            urlQueryItems.append(URLQueryItem(name: key, value: value))
         }
+        self.url = self.url.appending(queryItems: urlQueryItems)
         return self
     }
 

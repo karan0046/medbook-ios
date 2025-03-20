@@ -19,12 +19,12 @@ class APIService {
         }
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            let jsonData = try JSONSerialization.jsonObject(with: data)
             guard let httpResponse = response as? HTTPURLResponse else {
                 return (.unexpectedResponse, nil, nil, nil)
             }
             switch httpResponse.statusCode {
             case 200...299:
+                let jsonData = try JSONSerialization.jsonObject(with: data)
                 return (.success, httpResponse, jsonData, nil)
             case 401:
                 return (.unauthorized, httpResponse, nil, "Unauthorized access.")
