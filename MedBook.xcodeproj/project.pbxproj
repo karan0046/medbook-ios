@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		23111FD82D8C00AE00FBB6BC /* PasswordValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FD72D8C00A700FBB6BC /* PasswordValidationResult.swift */; };
 		23111FDA2D8C00C600FBB6BC /* RequirementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FD92D8C00C500FBB6BC /* RequirementRow.swift */; };
+		23111FEE2D8C5B9C00FBB6BC /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FED2D8C5B9600FBB6BC /* APIProtocol.swift */; };
+		23111FF02D8C5BB600FBB6BC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FEF2D8C5BAF00FBB6BC /* HTTPMethod.swift */; };
+		23111FF22D8C5C6B00FBB6BC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FF12D8C5C6900FBB6BC /* API.swift */; };
+		23111FF42D8C5D6A00FBB6BC /* APIResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FF32D8C5D6100FBB6BC /* APIResponseStatus.swift */; };
+		23111FF62D8C5DF400FBB6BC /* APIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111FF52D8C5DEB00FBB6BC /* APIExtension.swift */; };
 		2316C10C2D8A7C640018A84F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1062D8A7C640018A84F /* ContentView.swift */; };
 		2316C10D2D8A7C640018A84F /* MedBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1072D8A7C640018A84F /* MedBook.xcdatamodeld */; };
 		2316C10E2D8A7C640018A84F /* MedBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1082D8A7C640018A84F /* MedBookApp.swift */; };
@@ -74,6 +79,11 @@
 /* Begin PBXFileReference section */
 		23111FD72D8C00A700FBB6BC /* PasswordValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidationResult.swift; sourceTree = "<group>"; };
 		23111FD92D8C00C500FBB6BC /* RequirementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementRow.swift; sourceTree = "<group>"; };
+		23111FED2D8C5B9600FBB6BC /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		23111FEF2D8C5BAF00FBB6BC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		23111FF12D8C5C6900FBB6BC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		23111FF32D8C5D6100FBB6BC /* APIResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseStatus.swift; sourceTree = "<group>"; };
+		23111FF52D8C5DEB00FBB6BC /* APIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIExtension.swift; sourceTree = "<group>"; };
 		2316C0D12D8A7C550018A84F /* MedBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2316C0E62D8A7C570018A84F /* MedBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2316C0F02D8A7C570018A84F /* MedBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +310,11 @@
 		2316C1412D8A81F80018A84F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				23111FF32D8C5D6100FBB6BC /* APIResponseStatus.swift */,
+				23111FF52D8C5DEB00FBB6BC /* APIExtension.swift */,
+				23111FF12D8C5C6900FBB6BC /* API.swift */,
+				23111FEF2D8C5BAF00FBB6BC /* HTTPMethod.swift */,
+				23111FED2D8C5B9600FBB6BC /* APIProtocol.swift */,
 				2316C1422D8A82050018A84F /* APIService.swift */,
 			);
 			path = Network;
@@ -540,6 +555,7 @@
 				2316C1432D8A82060018A84F /* APIService.swift in Sources */,
 				23111FDA2D8C00C600FBB6BC /* RequirementRow.swift in Sources */,
 				2316C1452D8A824E0018A84F /* SignUpViewModel.swift in Sources */,
+				23111FEE2D8C5B9C00FBB6BC /* APIProtocol.swift in Sources */,
 				2316C10D2D8A7C640018A84F /* MedBook.xcdatamodeld in Sources */,
 				2316C12A2D8A7E470018A84F /* LaunchScreenViewModel.swift in Sources */,
 				2316C1632D8ABE220018A84F /* BookListView.swift in Sources */,
@@ -565,8 +581,11 @@
 				2316C14A2D8A82970018A84F /* Country.swift in Sources */,
 				2316C14C2D8A82A20018A84F /* CountryView.swift in Sources */,
 				2316C16A2D8ABEEE0018A84F /* BookSortViewModel.swift in Sources */,
+				23111FF22D8C5C6B00FBB6BC /* API.swift in Sources */,
 				2316C1682D8ABEE50018A84F /* BookSortView.swift in Sources */,
+				23111FF62D8C5DF400FBB6BC /* APIExtension.swift in Sources */,
 				2316C15C2D8AAE740018A84F /* HomeSearchView.swift in Sources */,
+				23111FF02D8C5BB600FBB6BC /* HTTPMethod.swift in Sources */,
 				2316C13A2D8A7FCE0018A84F /* SelectionIdentifier.swift in Sources */,
 				2316C1892D8B37F30018A84F /* HomeViewModel.swift in Sources */,
 				2316C1362D8A7FBB0018A84F /* DBManagerQueryHelper.swift in Sources */,
@@ -574,6 +593,7 @@
 				2316C1722D8ABF950018A84F /* BookListCellView.swift in Sources */,
 				2316C12F2D8A7E780018A84F /* Table.swift in Sources */,
 				2316C1742D8ABFA00018A84F /* BookListCellViewModel.swift in Sources */,
+				23111FF42D8C5D6A00FBB6BC /* APIResponseStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,7 +34,7 @@ class CountryViewModel: ObservableObject {
             loading = false
             return
         }
-        let data = await APIService.shared.executeAPI(url: url)
+        let (_, _, data, _) = await API(url).execute()
         guard let result = data as? [String: Any], let countriesData = result["data"] as? [String: Any] else {
             return
         }
@@ -69,7 +69,7 @@ class CountryViewModel: ObservableObject {
             print("invalid url")
             return
         }
-        let data = await APIService.shared.executeAPI(url: url)
+        let (_, _, data, _) = await API(url).execute()
         guard let result = data as? [String: Any], let name = result["country"] as? String else { return }
         currentIPcountry = name
         UserDefaults.standard.set(name, forKey: "IpCountry")

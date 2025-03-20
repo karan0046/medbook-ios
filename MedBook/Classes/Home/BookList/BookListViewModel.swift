@@ -41,7 +41,7 @@ class BookListViewModel: ObservableObject {
             return
         }
         // call API to fetch data
-        let result = await APIService.shared.executeAPI(url: url)
+        let (_, _, result, _) = await API(url).execute()
         guard let data = result as? [String: Any],
               let docs = data["docs"] as? [[String: Any]] else {
             loading = false
