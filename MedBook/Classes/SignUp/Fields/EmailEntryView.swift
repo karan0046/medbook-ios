@@ -20,7 +20,7 @@ struct EmailEntryView: View {
                 }
                 .autocorrectionDisabled(true)
                 .textInputAutocapitalization(.never)
-                .textContentType(.oneTimeCode)
+                .textContentType(.newPassword)
                 .overlay(
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 2)

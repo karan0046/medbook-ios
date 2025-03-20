@@ -24,7 +24,7 @@ struct PasswordEntryView: View {
                         }
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
-                        .textContentType(.oneTimeCode)
+                        .textContentType(.newPassword)
                 } else {
                     SecureField("Password", text: $password)
                         .onChange(of: password) { oldValue, newValue in
@@ -33,7 +33,7 @@ struct PasswordEntryView: View {
                         }
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
-                        .textContentType(.oneTimeCode)
+                        .textContentType(.newPassword)
                 }
                 Button(action: {
                     isPasswordVisible.toggle()
