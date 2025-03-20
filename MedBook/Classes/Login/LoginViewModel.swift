@@ -28,9 +28,9 @@ class LoginViewModel: ObservableObject {
             validCreds = false
             return
         }
+        resetCurrentUser(User(json: record))
         processing = false
         validCreds = true
-        resetCurrentUser(User(json: record))
     }
     
     private func resetCurrentUser(_ user: User) {

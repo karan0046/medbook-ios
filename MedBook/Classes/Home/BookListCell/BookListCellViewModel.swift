@@ -7,19 +7,12 @@
 
 import SwiftUI
 
-@MainActor
 class BookListCellViewModel: ObservableObject {
-    
     @Published var processing: Bool = false
     @Published var bookmarked: Bool = false
     
     init() {
         
-    }
-    
-    func fetchBookmarkState(_ book: Book) async {
-        let exits = await Table.BookMark.exists(withId: book.id)
-        bookmarked = exits
     }
     
     func getImageURL(_ book: Book) -> String {

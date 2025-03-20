@@ -36,13 +36,7 @@ class BookListViewModel: ObservableObject {
             clearBookList()
         }
         offset = bookList.count
-        var components = URLComponents(string: bookListURL)
-        components?.queryItems = [
-            URLQueryItem(name: "title", value: searchText),
-            URLQueryItem(name: "offset", value: "\(offset)"),
-            URLQueryItem(name: "limit", value: "\(limit)")
-        ]
-        guard let url = components?.url else {
+        guard let url = createURL(searchText: searchText) else {
             loading = false
             return
         }
@@ -53,12 +47,19 @@ class BookListViewModel: ObservableObject {
             loading = false
             return
         }
-        docs.forEach { bookJSON in
-            let book = Book(json: bookJSON)
-            bookList.append(book)
-        }
+        bookList.append(contentsOf: docs.map { Book(json: $0) })
         await loadBookmarks()
         loading = false
+    }
+    
+    private func createURL(searchText: String) -> URL? {
+        var components = URLComponents(string: bookListURL)
+        components?.queryItems = [
+            URLQueryItem(name: "title", value: searchText),
+            URLQueryItem(name: "offset", value: "\(offset)"),
+            URLQueryItem(name: "limit", value: "\(limit)")
+        ]
+        return components?.url
     }
     
     func loadBookmarks() async {
@@ -71,58 +72,70 @@ class BookListViewModel: ObservableObject {
         }
     }
     
-    
     func updateBookmark(_ book: Book) async {
-        if !book.isBookmarked {
-            await Table.BookMark.insert(withJson: [
-                "bookId": book.id,
-                "user": (CurrentUser.shared.profile?.email ?? "")
-            ], docId: UUID().uuidString) { success, error in
-                guard success else {
-                    print(error as Any)
-                    return
-                }
-            }
-            
-            await Table.Book.upsert(id: book.id, withJson: book.toDic(), completion: { success, error in
-                guard success else {
-                    print(error as Any)
-                    return
-                }
-            })
-            
-            if let index = bookList.firstIndex(of: book) {
-                bookList[index].isBookmarked = true
-            }
-            
+        let isBookmarked = book.isBookmarked
+        let filters = [
+            "bookId": FilterOperator.eq.value(book.id),
+            "user": FilterOperator.eq.value(CurrentUser.shared.profile?.email ?? "")
+        ]
+        
+        if isBookmarked {
+            await removeBookmark(for: book, filters: filters)
         } else {
-            await Table.BookMark.deleteAll(filters: [
-                "bookId": FilterOperator.eq.value(book.id),
-                "user": FilterOperator.eq.value((CurrentUser.shared.profile?.email ?? ""))
-            ]){ success, error in
-                guard success else {
-                    print(error as Any)
-                    return
-                }
+            await addBookmark(for: book, filters: filters)
+        }
+        
+        if let index = bookList.firstIndex(of: book) {
+            bookList[index].isBookmarked.toggle()
+        }
+    }
+    
+    private func addBookmark(for book: Book, filters: [String: Any]) async {
+        await Table.BookMark.insert(withJson: [
+            "bookId": book.id,
+            "user": (CurrentUser.shared.profile?.email ?? "")
+        ], docId: UUID().uuidString) { success, error in
+            guard success else {
+                print(error as Any)
+                return
             }
-            
-            if await Table.BookMark.fetchAll(filters: [
-                "bookId": FilterOperator.eq.value(book.id)
-            ], sortBy: nil, offset: nil, limit: nil).isEmpty {
-                // If no records of this book is present in the BookMark Table then clear the book record.
-                Task {
-                    await Table.Book.deleteAll(filters: ["id": FilterOperator.eq.value(book.id)]) { success, error in
-                        guard success else {
-                            print(error as Any)
-                            return
-                        }
+        }
+        await Table.Book.upsert(id: book.id, withJson: book.toDic(), completion: { success, error in
+            guard success else {
+                print(error as Any)
+                return
+            }
+        })
+        if let index = bookList.firstIndex(of: book) {
+            bookList[index].isBookmarked = true
+        }
+    }
+    
+    private func removeBookmark(for book: Book, filters: [String: Any]) async {
+        await Table.BookMark.deleteAll(filters: [
+            "bookId": FilterOperator.eq.value(book.id),
+            "user": FilterOperator.eq.value((CurrentUser.shared.profile?.email ?? ""))
+        ]){ success, error in
+            guard success else {
+                print(error as Any)
+                return
+            }
+        }
+        if await Table.BookMark.fetchAll(filters: [
+            "bookId": FilterOperator.eq.value(book.id)
+        ], sortBy: nil, offset: nil, limit: nil).isEmpty {
+            // If no records of this book is present in the BookMark Table then clear the book record.
+            Task {
+                await Table.Book.deleteAll(filters: ["id": FilterOperator.eq.value(book.id)]) { success, error in
+                    guard success else {
+                        print(error as Any)
+                        return
                     }
                 }
             }
-            
-            if let index = bookList.firstIndex(of: book) {
-                bookList[index].isBookmarked = false
-            }
+        }
+        if let index = bookList.firstIndex(of: book) {
+            bookList[index].isBookmarked = false
         }
     }
     

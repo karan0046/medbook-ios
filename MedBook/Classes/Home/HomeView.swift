@@ -71,7 +71,6 @@ struct HomeView: View {
         .navigationDestination(isPresented: $navigateTolaunchScreen) {
             LaunchScreenView()
         }
-        .navigationBarBackButtonHidden()
         .background(
             linearGradient.ignoresSafeArea()
         )

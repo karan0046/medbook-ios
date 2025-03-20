@@ -84,8 +84,7 @@ struct LaunchScreenView: View {
             .navigationBarBackButtonHidden()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                linearGradient
-                    .ignoresSafeArea()
+                linearGradient.ignoresSafeArea()
             )
         }
     }
