@@ -10,10 +10,8 @@ import SwiftUI
 struct PasswordEntryView: View {
     @Binding var password: String
     @Binding var isValidPassword: Bool
-    var validationRequired: Bool
-    
     @State private var isPasswordVisible = false
-    
+    var validationRequired: Bool
     
     var body: some View {
         VStack {
@@ -35,8 +33,6 @@ struct PasswordEntryView: View {
                         }
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
-                        
                 }
                 Button(action: {
                     isPasswordVisible.toggle()
@@ -45,19 +41,16 @@ struct PasswordEntryView: View {
                         .foregroundColor(.gray)
                 }
             }
-            .padding(.leading, 20)
-            .padding(.trailing, 20)
-            .padding(.top, 30)
+            .frame(maxWidth: .infinity)
             .overlay(
                 Rectangle()
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                    .frame(maxWidth: .infinity, maxHeight: 2)
+                    .frame(maxHeight: 2)
                     .foregroundColor(
                         Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
                     ),
                 alignment: .bottom
             )
+            .padding(EdgeInsets(top: 30, leading: 20, bottom: 10, trailing: 20))
             
             if validationRequired {
                 VStack(alignment: .leading, spacing: 6) {
@@ -67,42 +60,16 @@ struct PasswordEntryView: View {
                     RequirementRow(label: "Special character", isMet: validationResult.hasSpecialCharacter)
                     RequirementRow(label: "Atleast 8 characters", isMet: validationResult.isMinLength)
                 }
-                .padding()
             }
         }
     }
     
-    func validatePassword(_ password: String) -> PasswordValidationResult {
+    private func validatePassword(_ password: String) -> PasswordValidationResult {
         return PasswordValidationResult(
             hasUppercase: password.range(of: "[A-Z]", options: .regularExpression) != nil,
             hasNumber: password.range(of: "\\d", options: .regularExpression) != nil,
             hasSpecialCharacter: password.range(of: "[\\W_]", options: .regularExpression) != nil,
             isMinLength: password.count >= 8
         )
-    }
-}
-
-struct PasswordValidationResult {
-    var hasUppercase: Bool
-    var hasNumber: Bool
-    var hasSpecialCharacter: Bool
-    var isMinLength: Bool
-    
-    var isValid: Bool {
-        hasUppercase && hasNumber && hasSpecialCharacter && isMinLength
-    }
-}
-
-struct RequirementRow: View {
-    let label: String
-    let isMet: Bool
-
-    var body: some View {
-        HStack() {
-            Image(systemName: isMet ? "checkmark.square" : "square")
-                .foregroundColor(isMet ? .green : Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
-            Text(label)
-                .foregroundColor(Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
-        }
     }
 }
