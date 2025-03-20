@@ -14,13 +14,10 @@ class CountryViewModel: ObservableObject {
     @Published var currentIPcountry: String = ""
     
     init() {
-        Task {
-            await fetchIPCountry()
-            await fetchData()
-        }
+        
     }
     
-    private func fetchData() async {
+    func fetchData() async {
         loading = true
         guard let url = URL(string: "https://api.first.org/data/v1/countries") else {
             loading = false
@@ -58,7 +55,7 @@ class CountryViewModel: ObservableObject {
         loading = false
     }
     
-    private func fetchIPCountry() async {
+    func fetchIPCountry() async {
         loading = true
         // save IpCountry in USerDaefaults and use it next-for-time
         if let savedCountry = UserDefaults.standard.string(forKey: "IpCountry") {

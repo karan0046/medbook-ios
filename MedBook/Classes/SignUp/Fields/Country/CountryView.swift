@@ -23,10 +23,11 @@ struct CountryView: View {
                 .padding(.leading, 20)
                 .font(.title3)
             
-            // write choose country logic here
             if viewModel.loading {
                 ProgressView("Loading...")
-            } else {
+            }
+            
+            if !viewModel.countries.isEmpty {
                 let sortedCountries = viewModel.countries.sorted(by: { cont1, cont2 in
                     cont1.country < cont2.country
                 })
@@ -44,12 +45,17 @@ struct CountryView: View {
                 .pickerStyle(MenuPickerStyle())
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
-                .onAppear {
-                    if country.isEmpty, !viewModel.currentIPcountry.isEmpty {
-                        country = viewModel.currentIPcountry
-                        isValidCountry = true
-                    }
-                }
+            }
+        }
+        .onAppear {
+            Task {
+                await viewModel.fetchIPCountry()
+                await viewModel.fetchData()
+            }
+        }.onChange(of: viewModel.currentIPcountry) { oldValue, newValue in
+            if !viewModel.currentIPcountry.isEmpty {
+                country = viewModel.currentIPcountry
+                isValidCountry = true
             }
         }
     }

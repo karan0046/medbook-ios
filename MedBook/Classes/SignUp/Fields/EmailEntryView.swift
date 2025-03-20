@@ -18,8 +18,9 @@ struct EmailEntryView: View {
                 .onChange(of: email) { oldValue, newValue in
                     isValidEmail = isValidEmailFormat(newValue)
                 }
-                .autocapitalization(.none)
-                .autocorrectionDisabled()
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
+                .textContentType(.oneTimeCode)
                 .overlay(
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 2)
