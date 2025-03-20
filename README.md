@@ -7,7 +7,7 @@ A SwiftUI iOS application that allows users to search for books and bookmark the
     <th style="border: none;"><strong>MedBook</strong></th>
     <td style="border: none;"><img src="https://img.shields.io/badge/Xcode-16.2-blue?logo=Xcode&logoColor=white" alt="Firefox-iOS"></td>
     <td style="border: none;"><img src="https://img.shields.io/badge/Swift-6.0.3-red?logo=Swift&logoColor=white" alt="Firefox-iOS"></td>
-    <td style="border: none;"><img src="https://img.shields.io/badge/iOS-17.0+-green?logo=apple&logoColor=white" alt="Firefox-iOS"></td>
+    <td style="border: none;"><img src="https://img.shields.io/badge/iOS-18.0+-green?logo=apple&logoColor=white" alt="Firefox-iOS"></td>
     <td style="border: none;"><img src="https://img.shields.io/badge/Couchbase_Lite-3.2.2-red?logo=couchbase&logoColor=white" alt="Couchbase Lite"></td>
   </tr>
 </table>
