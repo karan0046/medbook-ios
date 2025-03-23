@@ -35,7 +35,6 @@ struct BookListView: View {
                 }
                 // do not perform search immediately when searchText is changed
                 searchBookList?.cancel()
-                searchBookList?.cancel()
                 let task = DispatchWorkItem {
                     Task {
                         selectedSortByOption = ""

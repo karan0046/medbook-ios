@@ -21,6 +21,8 @@ struct HomeView: View {
             HomeSearchView(searchText: $searchText)
             if searchText.count > 2 {
                 BookSortView(selectedSortByOption: $selectedSortByOption)
+            }
+            if !searchText.isEmpty {
                 BookListView(searchText: $searchText, selectedSortByOption: $selectedSortByOption)
             }
             Spacer()
