@@ -16,12 +16,6 @@ struct BookListTableView: View {
         List {
             ForEach(Array(bookList), id: \.id) { book in
                 BookListCellView(book: book)
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 10)
-                            .padding(.bottom, 10)
-                            .foregroundColor(.white)
-                    )
                     .swipeActions(edge: .trailing) {
                         Button {
                             onBookSwipeAction(book)
@@ -31,6 +25,13 @@ struct BookListTableView: View {
                         }
                         .tint(!book.isBookmarked ? .green : .red)
                     }
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: 10)
+                            .padding(.bottom, 10)
+                            .padding(.top, 10)
+                            .foregroundColor(.white)
+                    )
                     .onAppear {
                         if book == bookList.last {
                             onLastBookAppearAction(book)

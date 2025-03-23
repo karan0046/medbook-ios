@@ -65,6 +65,9 @@ class BookMarkListViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func refreshBookFromList(_ book: Book) {
         if let index = bookMarkList.firstIndex(of: book) {
             bookMarkList.remove(at: index)
         }

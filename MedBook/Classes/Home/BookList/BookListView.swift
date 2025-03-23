@@ -27,6 +27,7 @@ struct BookListView: View {
                 }
             })
             .scrollContentBackground(.hidden)
+            .padding(.top, -10)
             .onChange(of: searchText) { oldValue, newValue in
                 guard searchText.count > 2 else {
                     selectedSortByOption = ""

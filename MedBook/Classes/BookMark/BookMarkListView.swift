@@ -12,7 +12,7 @@ struct BookMarkListView: View {
     
     var body: some View {
         VStack {
-            Text("BookMarks")
+            Text("Bookmarks")
                 .font(.title)
                 .bold()
                 .padding(EdgeInsets(top: 0, leading: 12, bottom: 10, trailing: 10))
@@ -25,8 +25,14 @@ struct BookMarkListView: View {
             }, onBookSwipeAction: { book in
                 Task {
                     await viewModel.removeBookMark(book)
+                    await MainActor.run {
+                        withAnimation(.bouncy(duration: 3.0)) {
+                            viewModel.refreshBookFromList(book)
+                        }
+                    }
                 }
             })
+            .padding(.top, -20)
             .onAppear{
                 Task {
                     await viewModel.fetchData()
