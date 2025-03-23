@@ -38,7 +38,7 @@ struct BookListCellView: View {
                 }
             }
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(book.title)
                     .font(.headline)
                     .foregroundColor(
@@ -52,11 +52,11 @@ struct BookListCellView: View {
                         .foregroundColor(.orange)
                 }
                 
-                Text("\(book.authorName.joined(separator: ","))")
+                Text("Published in \(String(book.firstPublishYear))")
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
-                Text("Published in \(String(book.firstPublishYear))")
+                Text("Author(s): \(book.authorName.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.joined(separator: ", "))")
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
