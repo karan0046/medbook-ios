@@ -16,14 +16,14 @@ class LoginViewModel: ObservableObject {
         
     }
     
-    func checkValidCreds(_ email: String, _ password: String) async {
+    func checkValidCreds(_ loginCreds: Login) async {
         processing = true
-        guard let record = await Table.Auth.fetch(withId: email) else {
+        guard let record = await Table.Auth.fetch(withId: loginCreds.email) else {
             processing = false
             validCreds = false
             return
         }
-        guard let recordPassword = record["password"] as? String, password == recordPassword else {
+        guard let recordPassword = record["password"] as? String, loginCreds.password == recordPassword else {
             processing = false
             validCreds = false
             return

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email: String = ""
-    @State var password: String = ""
-    
+    @State var login = Login()
     @State private var isValidEmail = false
     @State private var isValidPassword = false
     @State private var allFieldsValid: Bool = false
@@ -33,17 +31,17 @@ struct LoginView: View {
                 .font(.title)
             
             VStack(spacing: 20) {
-                EmailEntryView(email: $email, isValidEmail: $isValidEmail)
+                EmailEntryView(email: $login.email, isValidEmail: $isValidEmail)
                     .onChange(of: isValidEmail) { _, _ in allFieldsVaild() }
-                PasswordEntryView(password: $password, isValidPassword: $isValidPassword, validationRequired: false)
-                    .onChange(of: password) { _, _ in allFieldsVaild() }
+                PasswordEntryView(password: $login.password, isValidPassword: $isValidPassword, validationRequired: false)
+                    .onChange(of: login.password) { _, _ in allFieldsVaild() }
             }
             
             Spacer()
             
             Button(action:{
                 Task {
-                    await viewModel.checkValidCreds(email, password)
+                    await viewModel.checkValidCreds(login)
                     if viewModel.validCreds {
                         navigateToHomePage = true
                     } else {
@@ -101,6 +99,6 @@ struct LoginView: View {
     }
     
     private func allFieldsVaild()  {
-        allFieldsValid = isValidEmail && !password.isEmpty
+        allFieldsValid = isValidEmail && !login.password.isEmpty
     }
 }

@@ -57,6 +57,7 @@
 		2316C1812D8B0CB90018A84F /* BookMarkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1802D8B0CB10018A84F /* BookMarkListViewModel.swift */; };
 		2316C1892D8B37F30018A84F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1882D8B37ED0018A84F /* HomeViewModel.swift */; };
 		234EFB212D90535200BFA60E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB202D90535000BFA60E /* Login.swift */; };
+		234EFB292D9087C000BFA60E /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB282D9087BC00BFA60E /* SignUp.swift */; };
 		238740342D8BAEEE003620CD /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238740332D8BAEE6003620CD /* BookListTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		2316C1802D8B0CB10018A84F /* BookMarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListViewModel.swift; sourceTree = "<group>"; };
 		2316C1882D8B37ED0018A84F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		234EFB202D90535000BFA60E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		234EFB282D9087BC00BFA60E /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		238740332D8BAEE6003620CD /* BookListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				2316C1482D8A827E0018A84F /* Fields */,
+				234EFB282D9087BC00BFA60E /* SignUp.swift */,
 				2316C1462D8A82520018A84F /* SignUpView.swift */,
 				2316C1442D8A82460018A84F /* SignUpViewModel.swift */,
 			);
@@ -558,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234EFB292D9087C000BFA60E /* SignUp.swift in Sources */,
 				2316C1592D8AADF70018A84F /* HomeView.swift in Sources */,
 				2316C1812D8B0CB90018A84F /* BookMarkListViewModel.swift in Sources */,
 				2316C10C2D8A7C640018A84F /* ContentView.swift in Sources */,

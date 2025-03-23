@@ -9,11 +9,7 @@ import SwiftUI
 
 
 struct SignUpView: View {
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var name: String = ""
-    @State var country: String = ""
-    
+    @State var signUp = SignUp()
     @State private var isValidEmail = false
     @State private var isValidPassword = false
     @State private var isValidCountry = false
@@ -36,13 +32,13 @@ struct SignUpView: View {
                 .padding(.leading, 20)
                 .font(.title)
             
-            EmailEntryView(email: $email, isValidEmail: $isValidEmail)
+            EmailEntryView(email: $signUp.email, isValidEmail: $isValidEmail)
                 .onChange(of: isValidEmail) { _, _ in allFieldsVaild() }
             
-            PasswordEntryView(password: $password, isValidPassword: $isValidPassword, validationRequired: true)
+            PasswordEntryView(password: $signUp.password, isValidPassword: $isValidPassword, validationRequired: true)
                 .onChange(of: isValidPassword) { _, _ in allFieldsVaild() }
             
-            CountryView(country: $country, isValidCountry: $isValidCountry)
+            CountryView(country: $signUp.country, isValidCountry: $isValidCountry)
                 .onChange(of: isValidCountry) { _, _ in allFieldsVaild() }
             
             Spacer()
@@ -57,7 +53,7 @@ struct SignUpView: View {
                     }
                 }
                 Task {
-                    await viewModel.createUserAndLogin(User(name: name, email: email, password: password, country: country))
+                    await viewModel.createUserAndLogin(User(name: signUp.name, email: signUp.email, password: signUp.password, country: signUp.country))
                 }
             }) {
                 HStack {
