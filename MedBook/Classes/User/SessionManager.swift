@@ -39,4 +39,8 @@ class SessionManager: ObservableObject {
     func logout() {
         isLoggedIn = false
     }
+    
+    deinit {
+        print("SessionManager deallocated")
+    }
 }
