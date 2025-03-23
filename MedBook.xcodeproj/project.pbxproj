@@ -56,6 +56,7 @@
 		2316C17F2D8B0CAD0018A84F /* BookMarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C17E2D8B0CA40018A84F /* BookMarkListView.swift */; };
 		2316C1812D8B0CB90018A84F /* BookMarkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1802D8B0CB10018A84F /* BookMarkListViewModel.swift */; };
 		2316C1892D8B37F30018A84F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1882D8B37ED0018A84F /* HomeViewModel.swift */; };
+		234EFB212D90535200BFA60E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB202D90535000BFA60E /* Login.swift */; };
 		238740342D8BAEEE003620CD /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238740332D8BAEE6003620CD /* BookListTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		2316C17E2D8B0CA40018A84F /* BookMarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListView.swift; sourceTree = "<group>"; };
 		2316C1802D8B0CB10018A84F /* BookMarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkListViewModel.swift; sourceTree = "<group>"; };
 		2316C1882D8B37ED0018A84F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		234EFB202D90535000BFA60E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		238740332D8BAEE6003620CD /* BookListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,6 +303,7 @@
 		2316C13C2D8A81B00018A84F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				234EFB202D90535000BFA60E /* Login.swift */,
 				2316C13D2D8A81C60018A84F /* LoginView.swift */,
 				2316C13F2D8A81D00018A84F /* LoginViewModel.swift */,
 			);
@@ -323,9 +326,9 @@
 		2316C1482D8A827E0018A84F /* Fields */ = {
 			isa = PBXGroup;
 			children = (
+				234EFB1F2D90533A00BFA60E /* Email */,
 				23111FD62D8C009B00FBB6BC /* Password */,
 				2316C1552D8A82DD0018A84F /* Country */,
-				2316C14F2D8A82B40018A84F /* EmailEntryView.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -398,6 +401,14 @@
 				2316C17E2D8B0CA40018A84F /* BookMarkListView.swift */,
 			);
 			path = BookMark;
+			sourceTree = "<group>";
+		};
+		234EFB1F2D90533A00BFA60E /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				2316C14F2D8A82B40018A84F /* EmailEntryView.swift */,
+			);
+			path = Email;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +573,7 @@
 				2316C1382D8A7FC60018A84F /* QueryFunction.swift in Sources */,
 				2316C1612D8ABE160018A84F /* Book.swift in Sources */,
 				2316C1502D8A82B50018A84F /* EmailEntryView.swift in Sources */,
+				234EFB212D90535200BFA60E /* Login.swift in Sources */,
 				2316C1342D8A7FB10018A84F /* FilterExpression.swift in Sources */,
 				2316C1212D8A7DD80018A84F /* User.swift in Sources */,
 				2316C15F2D8ABE0D0018A84F /* BookListViewModel.swift in Sources */,

@@ -38,7 +38,7 @@ struct PasswordEntryView: View {
                 Button(action: {
                     isPasswordVisible.toggle()
                 }) {
-                    Image(systemName: isPasswordVisible ? "eye" : "eye.slash")
+                    Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
                 }
             }
@@ -56,7 +56,7 @@ struct PasswordEntryView: View {
             if validationRequired {
                 VStack(alignment: .leading, spacing: 6) {
                     let validationResult = validatePassword(password)
-                    RequirementRow(label: "At least 1 Uppercase", isMet: validationResult.hasUppercase)
+                    RequirementRow(label: "At least 1 uppercase", isMet: validationResult.hasUppercase)
                     RequirementRow(label: "At least 1 number", isMet: validationResult.hasNumber)
                     RequirementRow(label: "Special character", isMet: validationResult.hasSpecialCharacter)
                     RequirementRow(label: "Atleast 8 characters", isMet: validationResult.isMinLength)
