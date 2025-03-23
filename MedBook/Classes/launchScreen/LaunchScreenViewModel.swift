@@ -13,7 +13,6 @@ class LaunchScreenViewModel: ObservableObject {
     @Published var userLoggedIn: Bool = false
     
     init() {
-        DBManager.instance.createDatabase()
         validateLogin()
     }
     

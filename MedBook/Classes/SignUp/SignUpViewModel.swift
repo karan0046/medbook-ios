@@ -26,12 +26,16 @@ class SignUpViewModel: ObservableObject {
         }
 
         await Table.Auth.insert(withJson: user.toDic(), docId: user.email) { success, error in
-            if success {
-                resetCurrentUser(user)
-            } else {
-                print(error as Any)
+            Task {
+                await MainActor.run {
+                    if success {
+                        resetCurrentUser(user)
+                    } else {
+                        print(error as Any)
+                    }
+                    signUpCompletion?(success, error)
+                }
             }
-            signUpCompletion?(success, error)
         }
         processing = false
     }
@@ -50,11 +54,15 @@ class SignUpViewModel: ObservableObject {
                 }
                 Task {
                     await Table.CurrentUser.insert(withJson: user.toDic(), docId: user.email) { success, error in
-                        guard success else {
-                            print(error as Any)
-                            return
+                        Task {
+                            guard success else {
+                                print(error as Any)
+                                return
+                            }
+                            await MainActor.run {
+                                CurrentUser.shared.profile = user
+                            }
                         }
-                        CurrentUser.shared.profile = user
                     }
                 }
             }

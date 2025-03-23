@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var sessionManager: SessionManager
+    @Environment(\.dismiss) private var dismiss
     @State var login = Login()
     @State private var isValidEmail = false
     @State private var isValidPassword = false
@@ -43,6 +45,8 @@ struct LoginView: View {
                 Task {
                     await viewModel.checkValidCreds(login)
                     if viewModel.validCreds {
+                        sessionManager.login()
+                        dismiss()
                         navigateToHomePage = true
                     } else {
                         showAlert = true

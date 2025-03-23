@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct SignUpView: View {
+    @EnvironmentObject var sessionManager: SessionManager
+    @Environment(\.dismiss) private var dismiss
     @State var signUp = SignUp()
     @State private var isValidEmail = false
     @State private var isValidPassword = false
@@ -46,6 +48,7 @@ struct SignUpView: View {
             Button(action: {
                 viewModel.signUpCompletion = { success, error in
                     if success {
+                        sessionManager.login()
                         navigateToHomePage = true
                     } else {
                         showAlert = true
@@ -90,6 +93,10 @@ struct SignUpView: View {
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Sign Up"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
+        .onChange(of: navigateToHomePage, { oldValue, newValue in
+            guard newValue else { return }
+            dismiss()
+        })
         .navigationDestination(isPresented: $navigateToHomePage) {
             HomeView()
         }

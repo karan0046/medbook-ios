@@ -58,6 +58,7 @@
 		2316C1892D8B37F30018A84F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1882D8B37ED0018A84F /* HomeViewModel.swift */; };
 		234EFB212D90535200BFA60E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB202D90535000BFA60E /* Login.swift */; };
 		234EFB292D9087C000BFA60E /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB282D9087BC00BFA60E /* SignUp.swift */; };
+		234EFB2B2D90892700BFA60E /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234EFB2A2D90892000BFA60E /* SessionManager.swift */; };
 		238740342D8BAEEE003620CD /* BookListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238740332D8BAEE6003620CD /* BookListTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		2316C1882D8B37ED0018A84F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		234EFB202D90535000BFA60E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		234EFB282D9087BC00BFA60E /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		234EFB2A2D90892000BFA60E /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		238740332D8BAEE6003620CD /* BookListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +258,7 @@
 		2316C11F2D8A7DCE0018A84F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				234EFB2A2D90892000BFA60E /* SessionManager.swift */,
 				2316C1202D8A7DD40018A84F /* User.swift */,
 				2316C1242D8A7DFA0018A84F /* CurrentUser.swift */,
 			);
@@ -589,6 +592,7 @@
 				2316C1472D8A82570018A84F /* SignUpView.swift in Sources */,
 				2316C1402D8A81D50018A84F /* LoginViewModel.swift in Sources */,
 				2316C10F2D8A7C640018A84F /* Persistence.swift in Sources */,
+				234EFB2B2D90892700BFA60E /* SessionManager.swift in Sources */,
 				2316C1252D8A7DFF0018A84F /* CurrentUser.swift in Sources */,
 				2316C13E2D8A81CC0018A84F /* LoginView.swift in Sources */,
 				2316C1182D8A7D750018A84F /* Design.swift in Sources */,
