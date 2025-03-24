@@ -13,23 +13,14 @@ class SessionManager: ObservableObject {
             UserDefaults.standard.set(isLoggedIn, forKey: "isLoggedIn")
         }
     }
-    @Published var isDatabaseCreated: Bool {
-        didSet {
-            UserDefaults.standard.set(isLoggedIn, forKey: "isDatabaseCreated")
-        }
-    }
-    
 
     init() {
         self.isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-        self.isDatabaseCreated = UserDefaults.standard.bool(forKey: "isDatabaseCreated")
-        createDatabase()
+        self.createDatabase()
     }
     
     private func createDatabase() {
-        guard !isDatabaseCreated else { return }
         DBManager.instance.createDatabase()
-        isDatabaseCreated = true
     }
 
     func login() {
